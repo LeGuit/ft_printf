@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   is_there_mod.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/08 17:29:31 by gwoodwar         ###   ########.fr       */
+/*   Created: 2015/12/08 16:57:07 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/08 17:29:33 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PRINTF_H
-# define _FT_PRINTF_H
-
-# include <stdarg.h>
-
-typedef struct		s_mod
+int			is_there_flags(char flag)
 {
-	char			*flags;
-	char			clenght;
-	int				ilenght;
-	char			cprec;
-	int				iprec;
-	char			fmodif;
-	char			smodif;
-	char			convers;
-	size_t			charprint;/*add all printed char i + mod*/
-}					t_mod;
+	if (flag == '#'
+			|| flag == '0'
+			|| flag == '-'
+			|| flag == '+'
+			|| flag == ' ')
+		return (1);
+	return (0);
+}
 
-#endif
+int			is_there_lenght(char *lenght)
+{
+	int		i;
+
+	if (ft_atoi(length))
+	{
+		while (ft_isdigit(length))
+			lenght++;
+		if (*lenght == '*')
+
+}
