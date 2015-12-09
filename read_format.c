@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
+
 int				read_format(const char *format, va_list arg)
 {
 	char		*cursor;
