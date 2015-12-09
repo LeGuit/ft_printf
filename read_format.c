@@ -22,7 +22,13 @@ int				read_format(const char *format, va_list arg)
 	i = 0;
 	while (cursor[i])
 	{
-		if (cursor[i] == '%' && cursor[i + 1] != '%')//get a mod
+		if (cursor[i] == '%' && cursor[i + 1] == '%') // thinks about counting 
+		{
+			cursor[i + 1] = 0;
+			ft_putstr(cursor);
+			cursor += i + 1;
+		}
+		if (cursor[i] == '%' && cursor [i + 1] == '%')//get a mod
 		{
 			cursor[i] = 0;
 			ft_putstr(cursor);
