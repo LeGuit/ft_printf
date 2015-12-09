@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:57:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/08 17:29:33 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/09 12:31:27 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int			is_there_flags(char flag)
 
 int			is_there_lenght(char *lenght)
 {
-	int		i;
+	if (ft_atoi(length) || *length == '*')
+		return (1);
+	return (0);
+}
 
-	if (ft_atoi(length))
-	{
-		while (ft_isdigit(length))
-			lenght++;
-		if (*lenght == '*')
-
+int			is_there_prec(char *prec)
+{
+	if (*prec == '.')
+		return (1);
+	return (0);
 }
