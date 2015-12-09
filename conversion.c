@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 17:45:47 by gwoodwar         ###   ########.fr       */
+/*   Created: 2015/12/09 17:39:49 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/09 17:47:52 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PRINTF_H
-# define _FT_PRINTF_H
+#include "includes/ft_printf.h"
 
-# include <stdarg.h>
-
-typedef struct		s_mod
+static fct_t const		g_convtab[] =
 {
-	char			flags[6];
-	char			clenght;
-	int				ilenght;
-	int				flagprec;
-	char			cprec;
-	int				iprec;
-	char			modif[3];
-	char			convers;
-	size_t			charprint;/*add all printed char i + mod*/
-	int				intarg;
-	char			*chararg;
-	int				nbcmod;
-}					t_mod;
-
-typedef int			(*fct_t)(t_mod *mod);//ptr on fct
-
-#endif
+	['s'] = &conv_s;
+	['S'] = &conv_ups;
+	['p'] = &conv_p;
+	['d'] = &conv_d;
+	['D'] = &conv_upd;
+	['i'] = &conv_i;
+	['o'] = &conv_o;
+	['O'] = &conv_upo;
+	['u'] = &conv_u;
+	['U'] = &conv_u;
+	['x'] = &conv_x;
+	['X'] = &conv_upx;
+	['c'] = &conv_c;
+	['C'] = &conv_upc;
+};

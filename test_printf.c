@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   test_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 17:45:47 by gwoodwar         ###   ########.fr       */
+/*   Created: 2015/12/09 16:08:34 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/09 16:39:21 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PRINTF_H
-# define _FT_PRINTF_H
+#include <stdio.h>
 
-# include <stdarg.h>
-
-typedef struct		s_mod
+int		main(void)
 {
-	char			flags[6];
-	char			clenght;
-	int				ilenght;
-	int				flagprec;
-	char			cprec;
-	int				iprec;
-	char			modif[3];
-	char			convers;
-	size_t			charprint;/*add all printed char i + mod*/
-	int				intarg;
-	char			*chararg;
-	int				nbcmod;
-}					t_mod;
-
-typedef int			(*fct_t)(t_mod *mod);//ptr on fct
-
-#endif
+	printf("TEST %-12 WOOD");
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:08:51 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 13:25:51 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/09 17:37:23 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,23 @@ int				read_format(const char *format, va_list arg)
 
 	cursor = format;
 	i = 0;
-	reset(mod);
+	mod.charprint = 0;
 	while (cursor[i])
 	{
 		if (cursor[i] == '%') // thinks about counting 
 		{
-			if (cursor[i + 1] == '%')
-				i++;
-			else
-				mod.nbcmod = get_mod(i - 1, cursor[i + 1], &mod, arg);
-			ft_putnstr(cursor, i);
-			if (nbcmod)
-				((mod->chararg) ? ft_putstr(chararg) : ft_putnbr(intarg));
-			cursor += (i + mod.nbcmod + 1);
-			i = -1;
+			reset(mod);
+			mod.nbcmod = get_mod(cursor[i + 1], &mod, arg);
+		}
+		ft_putchar(cursor[i]);
+		if (mod.nbcmod)//print the argument think again on what you get what you give
+		{
+			((mod->chararg) ? ft_putstr(chararg) : ft_putnbr(intarg));
+			cursor += (mod.nbcmod);
 		}
 		i++;
 	}
-	i = mod.charprint;
+	i += mod.charprint;
 	return (i);
 }
 
