@@ -31,7 +31,7 @@ int				read_format(const char *format, va_list arg)
 				mod.charprint = get_mod(i - 1, cursor[i + 1], &mod, arg)
 				cursor[i] = 0;
 			}
-			ft_putstr(cursor);
+			ft_putstr(cursor);// need to print the arg next to it in struct maybe
 			if ((cursor[i] == '%') ? cursor += i : cursor += i + 1);
 		}
 		i++;// check if good position
