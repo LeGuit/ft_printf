@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 19:26:03 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 20:09:22 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,12 @@ int				get_mod(const char *cursor, t_mod *m, va_list ap)
 	cnt += get_length(cursor + cnt, m, ap);
 	cnt += get_prec(cursor + cnt, m, ap);
 /*no prec of more than 1 prec -> no prec*/
-	if (*(cursor + cnt) == '.')
+/*	if (*(cursor + cnt) == '.')
 	{
+		m->prec = 0;
 		while (*(cursor + cnt) == '.' || ft_isdigit(*(cursor + cnt)))
 			cnt++;
-	}
+	}*/
 	cnt += get_modif(cursor + cnt, m);
 	if (!(cnt += get_convers(*(cursor + cnt), m)))//if no valid conversion
 		return (0);//return something special for invalid but keep counting

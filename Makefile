@@ -6,7 +6,7 @@
 #    By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 12:02:13 by gwoodwar          #+#    #+#              #
-#    Updated: 2015/12/14 18:45:42 by gwoodwar         ###   ########.fr        #
+#    Updated: 2015/12/14 20:13:06 by gwoodwar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LFT =		-L libft/ -lft
 
 SRCS =		ft_printf.c \
 			get_mod.c \
-			read_format.c \
+			ft_vprintf.c \
 			test_printf.c \
 			conversion.c \
 			misc.c \
