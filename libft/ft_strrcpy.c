@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_format.c                                      :+:      :+:    :+:   */
+/*   ft_strrcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 15:08:51 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 19:14:43 by gwoodwar         ###   ########.fr       */
+/*   Created: 2015/12/14 11:54:44 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/14 11:56:50 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "includes/libft.h"
 
-int				ft_vprintf(const char *format, va_list ap)
+char	*ft_strrcpy(char *dst, const char *src)
 {
-	t_mod		m;
-	size_t		i;
-	int			ret;
+	int	i;
 
-	i = 0;
-	ret = 0;
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			ft_bzero(&m, sizeof(t_mod));
-			i += get_mod(&format[i + 1], &m, ap) + 1;
-		//	process_mod(&m);
-			ret += print_arg(&m, ap);
-	//		continue ;
-		}
-		ft_putchar(format[i]);
-		ret++;
-		i++;
-	}
-	return (ret);
+	i = ft_strlen(src);
+	dst[i] = '\0';
+	while (--i)
+		dst[i] = src[i];
+	return (dst);
 }

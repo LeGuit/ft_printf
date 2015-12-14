@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 17:45:47 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 18:53:40 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,48 @@
 # define _FT_PRINTF_H
 
 # include <stdarg.h>
+# include "../libft/includes/libft.h"
+
+# define F_HASH				(1u << 0)
+# define F_ZERO				(1u << 1)
+# define F_MINUS			(1u << 2)
+# define F_SPACE			(1u << 3)
+# define F_PLUS				(1u << 4)
+
+# define MOD_HH				(1u << 0)
+# define MOD_H				(1u << 1)
+# define MOD_LL				(1u << 2)
+# define MOD_L				(1u << 3)
+# define MOD_J				(1u << 4)
+# define MOD_Z				(1u << 5)
+
+# define GET(i, mask)		(i & mask)
+# define SET(i, mask)		(i |= mask)
+# define UNSET(i, mask)		(i &= ~(mask))
+# define TOGGLE(i, mask)	(i ^= mask)
+# define PRINT(i, mask)		ft_putchar(GET(i, mask) ? '1' : '0')
 
 typedef struct		s_mod
 {
-	char			flags[6];
-	char			clenght;
-	int				ilenght;
-	int				flagprec;
-	char			cprec;
-	int				iprec;
-	char			modif[3];
+	int				flag;
+	int				length;
+	int				prec;
+	int				modif;
 	char			convers;
-	size_t			charprint;/*add all printed char i + mod*/
-	int				intarg;
-	char			*chararg;
-	int				nbcmod;
 }					t_mod;
 
-typedef int			(*fct_t)(t_mod *mod);//ptr on fct
+typedef int			(*fct_t)(t_mod *mod, va_list va);
+
+int					ft_printf(const char *format, ...);
+int					is_there_modif(char modif);
+int					get_mod(const char *cursor, t_mod *mod, va_list ap);
+int					ft_vprintf(const char *format, va_list ap);
+int					get_convers(char cursor, t_mod *m);
+int					conv_s(t_mod *m, va_list ap);
+int					print_arg(t_mod *m, va_list ap);
+
+//DEBUG
+
+void				print_struct(t_mod *m);
 
 #endif
