@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 16:08:34 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 16:39:21 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 11:49:06 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		main(void)
 {
-	printf("TEST %-12 WOOD");
+	int i = printf("TEST %10.0s WOOD\n", NULL);
+	printf("Ret Value : %d\n", i);
 	return (0);
 }

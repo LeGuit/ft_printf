@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:53:31 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/08 16:34:03 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 10:11:00 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int			ft_printf(const char *format, ...)
 {
-	va_list		arg;
+	va_list		va_ptr;
 	int			res;
 
-	va_start(arg, format);
-	res = smthing(format, arg);
-	va_end(arg, format);
+	va_start(va_ptr, format);
+	res = smthing(format, va_ptr);
+	va_end(va_pt);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:39:49 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 17:47:52 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 11:27:59 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,34 @@ static fct_t const		g_convtab[] =
 	['c'] = &conv_c;
 	['C'] = &conv_upc;
 };
+
+int						call_conv(t_mod *mod, fct_t (*f)(t_mod *m, va_list(va)))
+{
+
+}
+
+int						get_convers(char *cursor, t_mod *m, va_list va)
+{
+	if (*cursor != 's' && *cursor != 'S' && *cursor != 'p' && *cursor != 'd'
+			&& *cursor != 'D' && *cursor != 'i' && *cursor != 'o'
+			&& *cursor != 'O' && *cursor != 'u' && *cursor != 'U'
+			&& *cursor != 'x' && *cursor != 'X' && *cursor != 'c'
+			&& *cursor != 'C') 
+		return (0);
+	g_convtab[*cursor](mod, va);
+	return (1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

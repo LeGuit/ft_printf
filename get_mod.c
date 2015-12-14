@@ -6,27 +6,30 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/09 17:38:48 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 10:46:25 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				get_mod(char *cursor, t_mod **mod, va_list arg)
+int				get_mod(char *cursor, t_mod **m, va_list arg)
 {
 	size_t		cnt;
 
 	cnt = 0;
-	mod->nbcmod = 0;
-	cnt += get_flag(cursor, mod);
-	cnt += get_length(cursor, mod);
-	cnt += get_prec(cursor, mod);
-	cnt += get_modif(cusor, mod);
-	if (!(cnt += get_convers(cursor, mod)))//if no valid conversion
-			return (cnt);
-	process_mod(mod, arg);
-
+	m->nbcmod = 0;
+	cnt += get_flag(cursor, m);
+	cnt += get_length(cursor, m);
+	cnt += get_prec(cursor, m);
+	cnt += get_modif(cusor, m);
+	if (!(cnt += get_convers(cursor, m)))//if no valid conversion
+	{
+		m->nbcmod = cnt;//look where we could print
+		return (0);//return something special for invalid but keep counting
+	}
+	process_mod(m, arg);
+	return (cnt);
 }
 
-static int		get_flag(char *cursor, t_mod *mod)
+static int		get_flag(char *cursor, t_mod *m)
 {
 	int			i;
 
@@ -36,24 +39,24 @@ static int		get_flag(char *cursor, t_mod *mod)
 		while (cursor[i] == '#' || cursor[i] == '0' || cursor[i] == '-'
 				|| cursor[i] == '+' || cursor[i] == ' ')
 		{
-			mod->flags[i] = cursor[i];
+			m->flags[i] = cursor[i];
 			i++;
 		}
 	}
 	return (i);
 }
 
-static int		get_length(char *cursor, t_mod *mod)
+static int		get_length(char *cursor, t_mod *m)
 {
 	int			i;
 
 	i = 0;
 	if (cursor[i] == '0')
 	{
-		mod.flagprec = 1;
+		m.flagprec = 1;
 		i++;
 	}
-	if (mod.ilength = ft_atoi(cursor))
+	if (m.ilength = ft_atoi(cursor))
 	{
 		while(ft_isdigit(cursor[i]))
 				i++;
@@ -66,14 +69,14 @@ static int		get_length(char *cursor, t_mod *mod)
 	return (i);
 }
 
-static int		get_prec(char *cursor, t_mod *mod)
+static int		get_prec(char *cursor, t_mod *m)
 {
 	int			i;
 
 	i = 0;
 	if(is_there_prec(cursor))
 		i++;
-	if (mod.iprec = ft_atoi(cursor))
+	if (m.iprec = ft_atoi(cursor))
 	{
 		while(ft_isdigit(cursor[i]))
 				i++;
@@ -86,18 +89,18 @@ static int		get_prec(char *cursor, t_mod *mod)
 	return (i);
 }
 
-static int		get_modif(char *cursor, t_mod *mod)
+static int		get_modif(char *cursor, t_mod *m)
 {
 	int			i;
 
 	i = 0;
 	if(is_there_modif(cursor))
 	{
-		mod->modif[i] = cursor[i];
+		m->modif[i] = cursor[i];
 		i++;
 		if (is_there_modif(cursor + 1))
 		{
-			mod->modif[i] = cursor[i];
+			m->modif[i] = cursor[i];
 			i++;
 		}
 	}
