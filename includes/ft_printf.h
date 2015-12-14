@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 18:53:40 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 20:58:13 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define F_MINUS			(1u << 2)
 # define F_SPACE			(1u << 3)
 # define F_PLUS				(1u << 4)
+# define F_ALL				(F_HASH | F_ZERO | F_MINUS | F_SPACE | F_PLUS)
 
 # define MOD_HH				(1u << 0)
 # define MOD_H				(1u << 1)
@@ -28,6 +29,7 @@
 # define MOD_L				(1u << 3)
 # define MOD_J				(1u << 4)
 # define MOD_Z				(1u << 5)
+# define MOD_ALL			(MOD_HH | MOD_H | MOD_LL | MOD_L | MOD_J | MOD_Z)
 
 # define GET(i, mask)		(i & mask)
 # define SET(i, mask)		(i |= mask)
