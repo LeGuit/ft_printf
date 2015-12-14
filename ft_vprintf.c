@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 20:12:43 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 20:27:13 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 20:31:27 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int				ft_vprintf(const char *format, va_list ap)
 			ft_bzero(&m, sizeof(t_mod));
 			i += get_mod(&format[i + 1], &m, ap) + 1;
 			process_mod(&m);//maybe more process i didn't see
-//			process_arg(&m, ap);
 			ret += print_arg(&m, ap);
 			continue ;
 		}
