@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 18:43:54 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 20:48:06 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/14 20:50:48 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			print_arg(t_mod *m, va_list ap)
  *		print_s(m, va_arg(ap, char *);
  *	else if (m->convers == 'p')
  *		print_p(m, va_arg(ap, void *);
- */
+ *///can add other type of conversion here
 	va_arg(ap, int);
 	return (0);
 }
