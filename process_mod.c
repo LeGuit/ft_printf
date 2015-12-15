@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 19:13:04 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 18:59:01 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:37:03 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		process_flags(t_mod *m)
 		TOGGLE(m->flag, F_ZERO);
 	if (GET(m->flag, F_SPACE) && ft_strchr("oOuUxXD", m->convers))
 		TOGGLE(m->flag, F_SPACE);
-	if (GET(m->flag, F_SPACE) &&  GET(m->flag, F_PLUS))
+	if (GET(m->flag, F_SPACE) && GET(m->flag, F_PLUS))
 		TOGGLE(m->flag, F_SPACE);
 }
 
@@ -30,7 +30,7 @@ void		process_modifier(t_mod *m)
 {
 	if (ft_strchr("DOCUS", m->convers))
 	{
-		UNSET(m->modif, MOD_ALL);//only one mod valid ?
+		UNSET(m->modif, MOD_ALL);
 		SET(m->modif, MOD_L);
 		m->convers = ft_tolower(m->convers);
 	}

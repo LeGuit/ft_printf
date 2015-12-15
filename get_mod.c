@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 16:33:30 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:38:01 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		get_length(const char *cursor, t_mod *m, va_list ap)
 		return (0);
 	if ((m->length = ft_atoi(cursor)))
 	{
-		while(ft_isdigit(cursor[i]))
+		while (ft_isdigit(cursor[i]))
 			i++;
 	}
 	else if (cursor[i] == '*')
@@ -59,12 +59,12 @@ static int		get_prec(const char *cursor, t_mod *m, va_list ap)
 {
 	int			i;
 
-	if(*cursor != '.')
+	if (*cursor != '.')
 		return (0);
 	i = 1;
 	if ((m->prec = ft_atoi(cursor + 1)))
 	{
-		while(ft_isdigit(cursor[i]))
+		while (ft_isdigit(cursor[i]))
 			i++;
 	}
 	else if (cursor[i] == '*')

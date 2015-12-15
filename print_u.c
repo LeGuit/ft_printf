@@ -6,13 +6,13 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 19:11:47 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:36:12 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-static t_ull 	get_arg_u(t_mod *m, va_list ap)
+static t_ull	get_arg_u(t_mod *m, va_list ap)
 {
 	if (GET(m->modif, MOD_HH))
 		return ((t_ull)(unsigned char)va_arg(ap, int));
@@ -55,12 +55,13 @@ static size_t	ft_space_u(t_mod *m, size_t size)
 	}
 	return (cnt);
 }
-int				print_u(t_mod *m, va_list  ap)
+
+int				print_u(t_mod *m, va_list ap)
 {
 	size_t		cnt;
 	t_ull		arg;
 	char		buf[128];
- 
+
 	arg = get_arg_u(m, ap);
 	get_buf(m, arg, buf);
 	cnt = ft_strlen(buf);
