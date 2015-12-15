@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 16:31:25 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 18:58:45 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int							ft_vprintf(const char *format, va_list ap);
 int							get_convers(char cursor, t_mod *m);
 int							conv_s(t_mod *m, va_list ap);
 int							print_arg(t_mod *m, va_list ap);
+void						process_flags(t_mod *m);
+void						process_modifier(t_mod *m);
+
 
 int							print_u(t_mod *m, va_list ap);
 int							print_sign(t_mod *m, va_list ap);

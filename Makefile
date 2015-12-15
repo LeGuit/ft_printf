@@ -6,7 +6,7 @@
 #    By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 12:02:13 by gwoodwar          #+#    #+#              #
-#    Updated: 2015/12/14 20:19:09 by gwoodwar         ###   ########.fr        #
+#    Updated: 2015/12/15 18:41:52 by gwoodwar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS =		ft_printf.c \
 			misc.c \
 			print_arg.c \
 			process_mod.c \
-		#	printf_s.c 
+			print_u.c
 
 OBJS =		$(SRCS:.c=.o)
 
