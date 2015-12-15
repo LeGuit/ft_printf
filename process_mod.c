@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 19:13:04 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 20:02:46 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 10:37:54 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void		process_flags(t_mod *m)
 {
 	if (GET(m->flag, F_ZERO) && m->prec && ft_strchr("dDioOuUixX", m->convers))
-		UNSET(m->flag, F_ZERO);
+		TOGGLE(m->flag, F_ZERO);
 	if (GET(m->flag, F_ZERO) && GET(m->flag, F_ZERO))
-		UNSET(m->flag, F_ZERO);
+		TOGGLE(m->flag, F_ZERO);
 	if (GET(m->flag, F_SPACE) &&  GET(m->flag, F_PLUS))
-		UNSET(m->flag, F_SPACE);
+		TOGGLE(m->flag, F_SPACE);
 }
 
 static void		process_convers(t_mod *m)
@@ -28,9 +28,11 @@ static void		process_convers(t_mod *m)
 			|| m->convers == 'O' || m->convers == 'U'
 			|| m->convers == 'C' || m->convers == 'S')
 	{
+		UNSET(m->modif, MOD_ALL);//only one mod valid ?
 		SET(m->modif, MOD_L);
 		m->convers = ft_tolower(m->convers);
 	}
+	//if (ft_strchr("s
 }
 
 void			process_mod(t_mod *m)

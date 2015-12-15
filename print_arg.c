@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 18:43:54 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 09:57:15 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 10:11:53 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static fct_t const      g_convtab[] =
 {
-	['s'] = &conv_s,
-	['S'] = &conv_ups,
-	['p'] = &conv_p,
-	['d'] = &conv_d,
-	['D'] = &conv_upd,
-	['i'] = &conv_i,
-	['o'] = &conv_o,
-	['O'] = &conv_upo,
-	['u'] = &conv_u,
-	['U'] = &conv_u,
-	['x'] = &conv_x,
-	['X'] = &conv_upx,
-	['c'] = &conv_c,
-	['C'] = &conv_upc,
+	['s'] = &print_s,
+	['S'] = &print_s,
+	['p'] = &print_p,
+	['d'] = &print_i,
+	['D'] = &print_i,
+	['i'] = &print_i,
+	['o'] = &print_i,
+	['O'] = &print_i,
+	['u'] = &print_i,
+	['U'] = &print_i,
+	['x'] = &print_i,
+	['X'] = &print_i,
+	['c'] = &print_i,
+	['C'] = &print_i,
 };
 
 int			print_arg(t_mod *m, va_list ap)
@@ -43,5 +43,5 @@ int			print_arg(t_mod *m, va_list ap)
 	 *		print_p(m, va_arg(ap, void *));
 	 *///can add other type of conversion here
 	va_arg(ap, int);
-	return (0);
+	return (1);
 }
