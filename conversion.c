@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:39:49 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 18:07:06 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 09:54:29 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ static fct_t const		g_convtab[] =
 
 int						get_convers(char cursor, t_mod *m)
 {
+	//if (!ft_strchr("sSpdDioOuUxXcC", cursor)
+	//	return (0);
+	//m->convers = cursor;
+	//return (1);
 	if (cursor != 's' && cursor != 'S' && cursor != 'p' && cursor != 'd'
 			&& cursor != 'D' && cursor != 'i' && cursor != 'o'
 			&& cursor != 'O' && cursor != 'u' && cursor != 'U'
