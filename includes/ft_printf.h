@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/14 20:58:13 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:31:25 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,33 @@
 # define TOGGLE(i, mask)	(i ^= mask)
 # define PRINT(i, mask)		ft_putchar(GET(i, mask) ? '1' : '0')
 
-typedef struct		s_mod
+typedef struct				s_mod
 {
-	int				flag;
-	int				length;
-	int				prec;
-	int				modif;
-	char			convers;
-}					t_mod;
+	int						flag;
+	int						length;
+	int						prec;
+	int						modif;
+	char					convers;
+}							t_mod;
 
-typedef int			(*fct_t)(t_mod *mod, va_list va);
+typedef int					(*fct_t)(t_mod *mod, va_list va);
+typedef unsigned long long	t_ull;
+typedef long long			t_ll;
 
-int					ft_printf(const char *format, ...);
-int					is_there_modif(char modif);
-int					get_mod(const char *cursor, t_mod *mod, va_list ap);
-int					ft_vprintf(const char *format, va_list ap);
-int					get_convers(char cursor, t_mod *m);
-int					conv_s(t_mod *m, va_list ap);
-int					print_arg(t_mod *m, va_list ap);
+int							ft_printf(const char *format, ...);
+int							is_there_modif(char modif);
+int							get_mod(const char *cursor, t_mod *mod, va_list ap);
+int							ft_vprintf(const char *format, va_list ap);
+int							get_convers(char cursor, t_mod *m);
+int							conv_s(t_mod *m, va_list ap);
+int							print_arg(t_mod *m, va_list ap);
+
+int							print_u(t_mod *m, va_list ap);
+int							print_sign(t_mod *m, va_list ap);
+int							print_s(t_mod *m, va_list ap);
+int							print_p(t_mod *m, va_list ap);
+int							print_c(t_mod *m, va_list ap);
+
 
 //DEBUG
 

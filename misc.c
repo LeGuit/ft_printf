@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   misc.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/15 16:55:02 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/15 17:04:26 by gwoodwar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/ft_printf.h"
 
 void		print_struct(t_mod *m)
@@ -24,3 +36,24 @@ void		print_struct(t_mod *m)
 	ft_putchar(m->convers);
 	ft_putchar('\n');
 }
+
+void		ft_space_u(t_ull n)
+{
+	int		sp;
+	t_ull	cpyn;
+	int		base;
+
+	sp = 0;
+	cpyn = n;
+	while (cpyn)
+	{
+
+	}
+	while (n > 0)
+	{
+		ft_putchar(' ');
+		n--;
+	}
+}
+
+int			ft_width_u(t_mod *m, 
