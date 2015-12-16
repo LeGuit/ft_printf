@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:55:02 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 14:24:50 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:23:09 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,29 @@ size_t   ft_space(t_mod *m, size_t size)
 	int      cnt;
 
 	cnt = 0;
-	while (cnt < (int)(m->length - size))
+	if (GET(m->flag, F_ZERO))
 	{
-		ft_putchar(' ');
-		cnt++;
+		while (cnt < (int)(m->length - size))
+		{
+			ft_putchar('0');
+			cnt++;
+		}
+	}
+	else
+	{
+		while (cnt < (int)(m->length - size))
+		{
+			ft_putchar(' ');
+			cnt++;
+		}
 	}
 	return (cnt);
+}
+
+int		print_modulo(t_mod *m, va_list ap)
+{
+	(void)ap;
+	(void)m;
+	ft_putchar('%');
+	return (1);
 }

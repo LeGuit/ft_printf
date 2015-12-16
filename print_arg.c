@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 18:43:54 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 16:07:11 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:21:51 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static fct_t const	g_convtab[] =
 {
+	['%'] = &print_modulo,
 	['s'] = &print_str,
 	['S'] = &print_str,
 	['p'] = &print_u,
@@ -36,7 +37,7 @@ int					print_arg(t_mod *m, va_list ap)
 
 	process_flags(m);
 	process_modifier(m);
-	print_struct(m);//get the va at the conv fct
+//	print_struct(m);//get the va at the conv fct
 	cnt = g_convtab[(int)m->convers](m, ap);
 	return (cnt);
 }

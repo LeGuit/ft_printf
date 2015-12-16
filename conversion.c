@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:39:49 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 19:32:05 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:18:51 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int						get_convers(char cursor, t_mod *m)
 {
-	if (!ft_strchr("sSpdDioOuUxXcC", cursor))
+	if (!ft_strchr("sSpdDioOuUxXcC%", cursor))
 		return (0);
 	m->convers = cursor;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 15:27:58 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 15:28:00 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:50:35 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int				print_str(t_mod *m, va_list ap)
 	size_t		i;
 
 	arg = get_arg_str(m, ap);
-	apply_prec(m, arg);
 	cnt = apply_prec(m, arg);
 	i = 0;
 	if (GET(m->flag, F_MINUS))
@@ -59,5 +58,5 @@ int				print_str(t_mod *m, va_list ap)
 		while (i < cnt)
 			ft_putchar(arg[i++]);
 	}
-	return (cnt);
+	return (cnt + i - 1);//cnt the i char print
 }

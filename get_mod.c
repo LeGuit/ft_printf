@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 15:19:26 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:45:57 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static int		get_prec(const char *cursor, t_mod *m, va_list ap)
 		m->prec = va_arg(ap, int);
 		i++;
 	}
-	ft_putnbr(i);
 	return (i);
 }
 
