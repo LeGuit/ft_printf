@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 12:38:52 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:57:30 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,27 @@ static void		get_buf(t_mod *m, t_ull arg, char *buf)
 {
 	if (m->convers == 'o')
 		ft_ulltstr_base(arg, "01234567", buf);
-	if (m->convers == 'x')
-		ft_ulltstr_base(arg, "0123456789abcdef", buf);
-	if (m->convers == 'X')
-		ft_ulltstr_base(arg, "0123456789ABCDEF", buf);
+	if (GET(m->flag, F_HASH))
+	{
+		buf[0] = '0';
+		if (m->convers == 'x')
+		{
+			buf[1] = 'x';
+			ft_ulltstr_base(arg, "0123456789abcdef", buf + 2);
+		}
+		if (m->convers == 'X')
+		{
+			buf[1] = 'X';
+			ft_ulltstr_base(arg, "0123456789ABCDEF", buf + 2);
+		}
+	}
+	if (!GET(m->flag, F_HASH))
+	{
+		if (m->convers == 'x')
+			ft_ulltstr_base(arg, "0123456789abcdef", buf);
+		if (m->convers == 'X')
+			ft_ulltstr_base(arg, "0123456789ABCDEF", buf);
+	}
 	if (m->convers == 'u')
 		ft_ulltstr_base(arg, "0123456789", buf);
 }
