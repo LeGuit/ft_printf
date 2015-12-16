@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 11:42:51 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 11:57:39 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 12:57:44 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,19 @@ static t_ll		get_arg_sign(t_mod *m, va_list ap)
 		return ((t_ll)va_arg(ap, int));
 }
 
-static char     *get_buf(t_mod *m, t_ll arg, char *buf)
+static void     get_buf(t_mod *m, t_ll arg, char *buf)
 {
-	if (m->convers == 'd')
-		return (ft_slltstr(arg, buf));
-	if (m->convers == 'i')
-		return (ft_slltstr(arg, buf));
-	return (0);
+	if (GET(m->flag, F_SPACE) || GET(m->flag, F_PLUS))
+	{
+		if (GET(m->flag, F_SPACE))
+			buf[0] = ' ';
+		if (GET(m->flag, F_PLUS))
+			buf[0] = '+';
+		ft_slltstr(arg, buf + 1);
+		return ;
+	}
+	else
+		ft_slltstr(arg, buf);
 }
 
 int             print_sign(t_mod *m, va_list ap)

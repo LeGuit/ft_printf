@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 11:03:48 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 12:38:52 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,16 @@ static t_ull	get_arg_u(t_mod *m, va_list ap)
 		return ((t_ull)va_arg(ap, unsigned int));
 }
 
-static char		*get_buf(t_mod *m, t_ull arg, char *buf)
+static void		get_buf(t_mod *m, t_ull arg, char *buf)
 {
 	if (m->convers == 'o')
-		return (ft_ulltstr_base(arg, "01234567", buf));
+		ft_ulltstr_base(arg, "01234567", buf);
 	if (m->convers == 'x')
-		return (ft_ulltstr_base(arg, "0123456789abcdef", buf));
+		ft_ulltstr_base(arg, "0123456789abcdef", buf);
 	if (m->convers == 'X')
-		return (ft_ulltstr_base(arg, "0123456789ABCDEF", buf));
+		ft_ulltstr_base(arg, "0123456789ABCDEF", buf);
 	if (m->convers == 'u')
-		return (ft_ulltstr_base(arg, "0123456789", buf));
-	return (0);
+		ft_ulltstr_base(arg, "0123456789", buf);
 }
 
 int				print_u(t_mod *m, va_list ap)
