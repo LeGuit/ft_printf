@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 18:58:45 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 10:22:20 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int							conv_s(t_mod *m, va_list ap);
 int							print_arg(t_mod *m, va_list ap);
 void						process_flags(t_mod *m);
 void						process_modifier(t_mod *m);
+size_t						ft_space(t_mod *m, size_t t);
 
 
 int							print_u(t_mod *m, va_list ap);

@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 19:36:12 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 11:03:48 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,6 @@ static char		*get_buf(t_mod *m, t_ull arg, char *buf)
 	return (0);
 }
 
-static size_t	ft_space_u(t_mod *m, size_t size)
-{
-	size_t		cnt;
-
-	cnt = 0;
-	while (cnt < (m->length - size))
-	{
-		ft_putchar(' ');
-		cnt++;
-	}
-	return (cnt);
-}
-
 int				print_u(t_mod *m, va_list ap)
 {
 	size_t		cnt;
@@ -64,15 +51,17 @@ int				print_u(t_mod *m, va_list ap)
 
 	arg = get_arg_u(m, ap);
 	get_buf(m, arg, buf);
+	if (!m->prec && buf[0] == '0')
+		buf[0] = 0;
 	cnt = ft_strlen(buf);
 	if (GET(m->flag, F_MINUS))
 	{
 		ft_putstr(buf);
-		cnt += ft_space_u(m, cnt);
+		cnt += ft_space(m, cnt);
 	}
 	else
 	{
-		cnt += ft_space_u(m, cnt);
+		cnt += ft_space(m, cnt);
 		ft_putstr(buf);
 	}
 	return (cnt);

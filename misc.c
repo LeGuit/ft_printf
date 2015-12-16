@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:55:02 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 18:22:09 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 11:03:24 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,16 @@ void		print_struct(t_mod *m)
 	ft_putstr("CONVERS : ");
 	ft_putchar(m->convers);
 	ft_putchar('\n');
+}
+size_t   ft_space(t_mod *m, size_t size)
+{
+	int      cnt;
+
+	cnt = 0;
+	while (cnt < (int)(m->length - size))
+	{
+		ft_putchar(' ');
+		cnt++;
+	}
+	return (cnt);
 }
