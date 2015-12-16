@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 16:08:34 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 15:32:42 by gwoodwar         ###   ########.fr       */
+/*   Created: 2015/12/16 15:27:45 by gwoodwar          #+#    #+#             */
+/*   Updated: 2015/12/16 15:41:48 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "includes/ft_printf.h"
+#include <wchar.h>
 
-int		main(void)
+static char		get_arg_c(t_mod *m, va_list ap)
 {
-	int i = printf("\nTest real : %-+ 10.3c WOOD", '0');
-	int j = ft_printf("\nTEST mine : %-+ 10.3c WOOD", '0');
-//	i = printf("\nTest real : %+10i WOOD", 1234);
-//	j = ft_printf("\nTEST mine : %+10i WOOD", 1234);
-	printf("Ret Value real : %d\n", i);
-	printf("Ret Value mine : %d\n", j);
-	return (0);
+	if (GET(m->modif, MOD_L))
+		return ((wint_t)va_arg(ap, int));
+	else
+		return ((char)va_arg(ap, int));
+}
+
+int				print_c(t_mod *m, va_list ap)
+{
+	size_t		cnt;
+	char		arg;
+
+	arg = get_arg_c(m, ap);
+	cnt = 1;
+	if (GET(m->flag, F_MINUS))
+	{
+		ft_putchar(arg);
+		cnt += ft_space(m, cnt);
+	}
+	else
+	{
+		cnt += ft_space(m, cnt);
+		ft_putchar(arg);
+	}
+	return (cnt);
 }
