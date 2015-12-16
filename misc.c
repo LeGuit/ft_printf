@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:55:02 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 11:03:24 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:24:50 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void		print_struct(t_mod *m)
 {
 	ft_putendl("\nFLAGS   :");
-	ft_putendl("#0- +");
+	ft_putendl("#0- +.");
 	PRINT(m->flag, F_HASH);
 	PRINT(m->flag, F_ZERO);
 	PRINT(m->flag, F_MINUS);
 	PRINT(m->flag, F_SPACE);
 	PRINT(m->flag, F_PLUS);
+	PRINT(m->flag, F_PREC);
 	ft_putstr("\nLENGTH  : ");
 	ft_putnbr(m->length);
 	ft_putstr("\nPREC    : ");

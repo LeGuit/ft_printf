@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 11:38:13 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:19:26 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ static int		get_prec(const char *cursor, t_mod *m, va_list ap)
 
 	if (*cursor != '.')
 		return (0);
+	SET(m->flag, F_PREC);
 	i = 1;
-	(m->prec = ft_atoi(cursor + 1));
+	(m->prec = ft_atoi(cursor + i));
 	while (ft_isdigit(cursor[i]))
 		i++;
 	if (cursor[i] == '*')
@@ -111,6 +112,7 @@ int				get_mod(const char *cursor, t_mod *m, va_list ap)
 	if (*(cursor + cnt) == '.')
 	{
 		m->prec = 0;
+		UNSET(m->flag, F_PREC);
 		while (*(cursor + cnt) == '.' || ft_isdigit(*(cursor + cnt)))
 			cnt++;
 	}

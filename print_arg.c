@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 18:43:54 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 11:55:04 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:06:30 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static fct_t const	g_convtab[] =
 {
-/*	['s'] = &print_s,
-	['S'] = &print_s,
-	['p'] = &print_p,
-*/	['d'] = &print_sign,
+	['s'] = &print_str,
+	['S'] = &print_str,
+//	['p'] = &print_p,
+	['d'] = &print_sign,
 	['D'] = &print_sign,
 	['i'] = &print_sign,
 	['o'] = &print_u,

@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:20:08 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 10:22:20 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:07:48 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define F_MINUS			(1u << 2)
 # define F_SPACE			(1u << 3)
 # define F_PLUS				(1u << 4)
+# define F_PREC				(1u << 5)
 # define F_ALL				(F_HASH | F_ZERO | F_MINUS | F_SPACE | F_PLUS)
 
 # define MOD_HH				(1u << 0)
@@ -41,7 +42,7 @@ typedef struct				s_mod
 {
 	int						flag;
 	int						length;
-	int						prec;
+	size_t					prec;
 	int						modif;
 	char					convers;
 }							t_mod;
@@ -64,7 +65,7 @@ size_t						ft_space(t_mod *m, size_t t);
 
 int							print_u(t_mod *m, va_list ap);
 int							print_sign(t_mod *m, va_list ap);
-int							print_s(t_mod *m, va_list ap);
+int							print_str(t_mod *m, va_list ap);
 int							print_p(t_mod *m, va_list ap);
 int							print_c(t_mod *m, va_list ap);
 
