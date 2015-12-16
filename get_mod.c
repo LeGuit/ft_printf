@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 16:36:07 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 10:48:36 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 11:38:13 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int				get_mod(const char *cursor, t_mod *m, va_list ap)
 	cnt += get_flag(cursor, m);
 	cnt += get_length(cursor + cnt, m, ap);
 	cnt += get_prec(cursor + cnt, m, ap);
-/*no prec of more than 1 prec -> no prec*/
+/*no prec of more than 1 prec -> no prec*///maybe not
 	if (*(cursor + cnt) == '.')
 	{
 		m->prec = 0;
