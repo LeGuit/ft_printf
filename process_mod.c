@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 19:13:04 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/15 19:37:03 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:02:08 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,14 @@ void		process_modifier(t_mod *m)
 		UNSET(m->modif, MOD_ALL);
 		SET(m->modif, MOD_L);
 		m->convers = ft_tolower(m->convers);
+	}
+}
+
+void		process_ptr(t_mod *m)
+{
+	if (m->convers == 'p')
+	{
+		SET(m->flag, F_HASH);
+		m->convers = 'x';
 	}
 }

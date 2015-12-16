@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 15:57:30 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:15:15 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static t_ull	get_arg_u(t_mod *m, va_list ap)
 		return ((t_ull)va_arg(ap, uintmax_t));
 	if (GET(m->modif, MOD_Z))
 		return ((t_ull)va_arg(ap, size_t));
+	if (m->convers == 'p')
+		return ((t_ull)va_arg(ap, void *));
 	else
 		return ((t_ull)va_arg(ap, unsigned int));
 }
@@ -66,8 +68,9 @@ int				print_u(t_mod *m, va_list ap)
 	char		buf[128];
 
 	arg = get_arg_u(m, ap);
+	process_ptr(m);
 	get_buf(m, arg, buf);
-	if (!m->prec && buf[0] == '0')
+	if (!m->prec && buf[0] == '0' && m->convers != 'x' && m->convers != 'X')
 		buf[0] = 0;
 	cnt = ft_strlen(buf);
 	if (GET(m->flag, F_MINUS))
