@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 11:42:51 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 18:38:51 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/17 11:56:02 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ static void		get_buf(t_mod *m, t_ll arg, char *buf)
 			buf[0] = '+';
 		ft_slltstr(arg, buf + 1);
 	}
+	else if (arg < 0 && GET(m->flag, F_ZERO))
+	{
+		ft_putchar('-');
+		if (arg == -2147483648)
+			buf = "2147483648";
+		else
+			ft_slltstr(ABS(arg), buf);
+	}
 	else
 		ft_slltstr(arg, buf);
 }
@@ -47,7 +55,7 @@ static void		get_buf(t_mod *m, t_ll arg, char *buf)
 int				print_sign(t_mod *m, va_list ap)
 {
 	size_t		cnt;
-	t_ull		arg;
+	t_ll		arg;
 	char		buf[128];
 
 	arg = get_arg_sign(m, ap);
@@ -55,6 +63,8 @@ int				print_sign(t_mod *m, va_list ap)
 	if (!m->prec && buf[0] == '0')
 		buf[0] = 0;
 	cnt = ft_strlen(buf);
+	if (arg < 0 && GET(m->flag, F_ZERO) && !GET(m->flag, F_PREC))
+		cnt++;
 	if (GET(m->flag, F_MINUS))
 	{
 		ft_putstr(buf);

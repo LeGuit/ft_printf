@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:55:02 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 18:23:09 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/17 12:53:57 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,41 @@ void		print_struct(t_mod *m)
 	ft_putchar(m->convers);
 	ft_putchar('\n');
 }
-size_t   ft_space(t_mod *m, size_t size)
+
+static size_t	zero_prec(t_mod *m, size_t size)
 {
-	int      cnt;
+	int			cnt;
 
 	cnt = 0;
-	if (GET(m->flag, F_ZERO))
+	if (!GET(m->flag, F_ZERO))
+		return (0);
+	if (GET(m->flag, F_PREC))
 	{
-		while (cnt < (int)(m->length - size))
-		{
-			ft_putchar('0');
-			cnt++;
-		}
-	}
-	else
-	{
-		while (cnt < (int)(m->length - size))
+		while (cnt < (int)(m->length - m->prec))
 		{
 			ft_putchar(' ');
 			cnt++;
 		}
+	}
+	while (cnt < (int)(m->length - size))
+	{
+		ft_putchar('0');
+		cnt++;
+	}
+	return (cnt);
+}
+
+size_t			ft_space(t_mod *m, size_t size)
+{
+	int			cnt;
+
+	cnt = 0;
+	if ((cnt = zero_prec(m, size)))
+		return (cnt);
+	while (cnt < (int)(m->length - size))
+	{
+		ft_putchar(' ');
+		cnt++;
 	}
 	return (cnt);
 }

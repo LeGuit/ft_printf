@@ -6,7 +6,7 @@
 #    By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/14 12:02:13 by gwoodwar          #+#    #+#              #
-#    Updated: 2015/12/16 17:37:43 by gwoodwar         ###   ########.fr        #
+#    Updated: 2015/12/17 13:20:34 by gwoodwar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,25 +30,25 @@ SRCS =		ft_printf.c \
 			print_sign.c \
 			print_str.c \
 			print_c.c \
-			main_test.c
+			#main_test.c
 			#test_printf.c \
 
 OBJS =		$(SRCS:.c=.o)
 
-all:		$(TMPNAME)
+all:		$(NAME)
 
 libft/libft.a:
 	make -C libft/ fclean
 	make -C libft/
 
-$(TMPNAME):	$(LIB_NAME) $(OBJS)
-	$(CC) $(FLAGS) -o $@ $(OBJS) $(LFT)
+#$(TMPNAME):	$(LIB_NAME) $(OBJS)
+#	$(CC) $(FLAGS) -o $@ $(OBJS) $(LFT)
 
 # Final MAKEFILE
 
-#$(NAME):	$(LIB_NAME) $(OBJS)
-#	ar rc $@ $^
-#	ranlib $@
+$(NAME):	$(LIB_NAME) $(OBJS)
+	ar rc $@ $^
+	ranlib $@
 
 %.o:		%.c
 	$(CC) $(FLAGS) $(LIB) $(HEAD) -o $@ -c $<

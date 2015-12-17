@@ -6,7 +6,7 @@
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 16:23:06 by gwoodwar          #+#    #+#             */
-/*   Updated: 2015/12/16 16:15:15 by gwoodwar         ###   ########.fr       */
+/*   Updated: 2015/12/17 13:18:04 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,36 @@ static t_ull	get_arg_u(t_mod *m, va_list ap)
 		return ((t_ull)va_arg(ap, unsigned int));
 }
 
+static int		hash_case(t_mod *m, t_ull arg, char *buf)
+{
+	if (!GET(m->flag, F_HASH) || !ft_strchr("oxX", m->convers))
+		return (0);
+	buf[0] = '0';
+	if (m->convers == 'x')
+	{
+		buf[1] = 'x';
+		ft_ulltstr_base(arg, "0123456789abcdef", buf + 2);
+	}
+	if (m->convers == 'X')
+	{
+		buf[1] = 'X';
+		ft_ulltstr_base(arg, "0123456789ABCDEF", buf + 2);
+	}
+	if (m->convers == 'o')
+		ft_ulltstr_base(arg, "01234567", buf + 1);
+	return (1);
+}
+
 static void		get_buf(t_mod *m, t_ull arg, char *buf)
 {
+	if (hash_case(m, arg, buf))
+			return ;
 	if (m->convers == 'o')
 		ft_ulltstr_base(arg, "01234567", buf);
-	if (GET(m->flag, F_HASH))
-	{
-		buf[0] = '0';
-		if (m->convers == 'x')
-		{
-			buf[1] = 'x';
-			ft_ulltstr_base(arg, "0123456789abcdef", buf + 2);
-		}
-		if (m->convers == 'X')
-		{
-			buf[1] = 'X';
-			ft_ulltstr_base(arg, "0123456789ABCDEF", buf + 2);
-		}
-	}
-	if (!GET(m->flag, F_HASH))
-	{
-		if (m->convers == 'x')
-			ft_ulltstr_base(arg, "0123456789abcdef", buf);
-		if (m->convers == 'X')
-			ft_ulltstr_base(arg, "0123456789ABCDEF", buf);
-	}
+	if (m->convers == 'x')
+		ft_ulltstr_base(arg, "0123456789abcdef", buf);
+	if (m->convers == 'X')
+		ft_ulltstr_base(arg, "0123456789ABCDEF", buf);
 	if (m->convers == 'u')
 		ft_ulltstr_base(arg, "0123456789", buf);
 }
@@ -70,7 +75,8 @@ int				print_u(t_mod *m, va_list ap)
 	arg = get_arg_u(m, ap);
 	process_ptr(m);
 	get_buf(m, arg, buf);
-	if (!m->prec && buf[0] == '0' && m->convers != 'x' && m->convers != 'X')
+	if (!m->prec && buf[0] == '0' && m->convers != 'x' && m->convers != 'X'
+		&& m->convers != 'o')
 		buf[0] = 0;
 	cnt = ft_strlen(buf);
 	if (GET(m->flag, F_MINUS))
